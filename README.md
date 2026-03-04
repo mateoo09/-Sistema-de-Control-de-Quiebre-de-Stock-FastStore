@@ -54,7 +54,7 @@ Abrir la carpeta del backend:
 FastStore.API
 Ejecutar el proyecto desde Visual Studio o desde terminal:
 
-dotnet run
+dotnet run --launch-profile https
 
 La API quedará disponible en:
 https://localhost:7265
@@ -62,7 +62,9 @@ https://localhost:7265
 Endpoints principales: a revisar
 
 GET    /api/inventory
+
 GET    /api/inventory/low-stock
+
 POST   /api/orders
 
 
