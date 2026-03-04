@@ -52,7 +52,7 @@ Cuando se ejecuta el backend por primera vez, Entity Framework crea automáticam
 Abrir la carpeta del backend:
 
 FastStore.API
-Ejecutar el proyecto desde Visual Studio o desde terminal:
+Ejecutar el proyecto desde visual studio community o desde terminal:
 
 dotnet run --launch-profile https
 
