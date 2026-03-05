@@ -67,6 +67,10 @@ GET    /api/inventory/low-stock
 
 POST   /api/orders
 
+cd FastStore.API
+dotnet restore
+dotnet run
+
 
 -----Ejecutar el Frontend-----
 
@@ -74,6 +78,8 @@ Abrir la carpeta:
 FastStore-Frontend
 
 Instalar dependencias:
+
+cd FastStore-Frontend
 npm install
 Ejecutar Angular:
 ng serve
