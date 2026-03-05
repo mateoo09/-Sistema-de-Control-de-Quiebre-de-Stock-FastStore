@@ -1,0 +1,40 @@
+.table-danger {
+  background-color: #f8d7da;
+}
+
+.table-danger:hover {
+  background-color: #f5c6cb;
+}
+
+tr:not(.table-danger):hover {
+  background-color: #f2f2f2;
+  cursor: pointer;
+}
+
+tr {
+  transition: background-color 0.2s ease;
+}
+
+.modal.d-block {
+  display: block !important;
+}
+
+.modal-backdrop.show {
+  opacity: 0.5;
+}
+
+.alert {
+  animation: slideIn 0.3s ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

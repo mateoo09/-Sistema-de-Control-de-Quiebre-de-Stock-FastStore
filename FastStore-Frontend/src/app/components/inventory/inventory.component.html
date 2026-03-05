@@ -1,0 +1,99 @@
+<div class="container mt-4">
+  <h2 class="mb-4">Inventario FastStore</h2>
+
+  <div class="mb-3">
+    <span class="badge bg-primary me-2">
+      Productos: {{ totalProductos }}
+    </span>
+
+    <span class="badge bg-danger">
+      Stock bajo: {{ productosBajoStock }}
+    </span>
+  </div>
+
+  <div class="card p-3 mb-4">
+    <h5>Crear Orden de Reposición</h5>
+
+    <div class="row">
+      <div class="col-md-3">
+        <input type="number"
+               class="form-control"
+               placeholder="Producto ID"
+               [(ngModel)]="productoId" />
+      </div>
+
+      <div class="col-md-3">
+        <input type="number"
+               class="form-control"
+               placeholder="Cantidad"
+               [(ngModel)]="cantidad" />
+      </div>
+
+      <div class="col-md-3">
+        <button class="btn btn-success"
+                (click)="crearOrden()"
+                [disabled]="!productoId || !cantidad">
+          Crear Orden
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <button class="btn btn-primary me-2" (click)="loadProductos()">
+      Ver Todos
+    </button>
+
+    <button class="btn btn-warning me-2" (click)="loadLowStock()">
+      Ver Stock Bajo
+    </button>
+
+    <button class="btn btn-secondary" (click)="loadProductos()">
+      Actualizar inventario
+    </button>
+  </div>
+
+  <div *ngIf="mensaje" class="alert alert-success mt-3">
+    {{ mensaje }}
+  </div>
+
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>Nombre</th>
+        <th>Categoría</th>
+        <th>Precio</th>
+        <th>Stock Actual</th>
+        <th>Stock Mínimo</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (producto of productos; track producto.id) {
+      <tr [class.table-danger]="producto.stockActual < producto.stockMinimo">
+        <td>{{ producto.nombre }}</td>
+        <td>{{ producto.categoriaNombre }}</td>
+        <td>{{ producto.precio | currency:'COP':'symbol':'1.0-0' }}</td>
+        <td>
+          {{ producto.stockActual }}
+          <i *ngIf="producto.stockActual < producto.stockMinimo"
+             class="bi bi-arrow-down-circle-fill text-danger ms-1">
+          </i>
+        </td>
+        <td>
+          {{ producto.stockMinimo }}
+          <i *ngIf="producto.stockActual >= producto.stockMinimo"
+             class="bi bi-check-circle-fill text-success ms-1">
+          </i>
+        </td>
+        <td>
+          <button class="btn btn-sm btn-success"
+                  (click)="prepararOrden(producto)">
+            Reponer
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
