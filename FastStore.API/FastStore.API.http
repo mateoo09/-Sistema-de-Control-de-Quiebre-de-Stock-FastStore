@@ -1,0 +1,10 @@
+@FastStore.API_HostAddress = https://localhost:7265
+
+### Crear orden válida
+POST {{FastStore.API_HostAddress}}/api/orders
+Content-Type: application/json
+
+{
+  "productoId": 2,
+  "cantidad": 10
+}
